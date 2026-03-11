@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>teacherBot - JavaScript Strings</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <div class="header">
+      <h1>teacherBot Strings App</h1>
+      <p>
+        Turned from simple <code>console.log()</code> lessons into a small real app
+        that teaches JavaScript string basics interactively.
+      </p>
+    </div>
+
+    <div class="content">
+      <div class="panel">
+        <h2>Lesson Settings</h2>
+
+        <div class="field">
+          <label for="botName">Bot Name</label>
+          <input id="botName" type="text" value="teacherBot" />
+        </div>
+
+        <div class="field">
+          <label for="subject">Subject</label>
+          <input id="subject" type="text" value="JavaScript" />
+        </div>
+
+        <div class="field">
+          <label for="topic">Topic</label>
+          <input id="topic" type="text" value="strings" />
+        </div>
+
+        <div class="buttons">
+          <button class="primary" id="runBtn">Run Lesson</button>
+          <button class="secondary" id="clearBtn">Clear Console</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>App Console</h2>
+        <div class="console" id="consoleOutput"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
