@@ -3,21 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>teacherBot - JavaScript Strings</title>
+  <title>teacherBot - AI Study Bot</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="app">
     <div class="header">
-      <h1>teacherBot Strings App</h1>
-      <p>
-        Turned from simple <code>console.log()</code> lessons into a small real app
-        that teaches JavaScript string basics interactively.
-      </p>
+      <div>
+        <h1>teacherBot</h1>
+        <p>
+          A real AI teaching bot with the API key protected on the backend.
+        </p>
+      </div>
+      <div class="status-pill" id="botStatus">Backend not checked yet</div>
     </div>
 
     <div class="content">
-      <div class="panel">
+      <aside class="panel settings-panel">
         <h2>Lesson Settings</h2>
 
         <div class="field">
@@ -35,16 +37,62 @@
           <input id="topic" type="text" value="strings" />
         </div>
 
-        <div class="buttons">
-          <button class="primary" id="runBtn">Run Lesson</button>
-          <button class="secondary" id="clearBtn">Clear Console</button>
+        <div class="field">
+          <label for="studentLevel">Student Level</label>
+          <select id="studentLevel">
+            <option value="beginner" selected>Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
         </div>
-      </div>
 
-      <div class="panel">
-        <h2>App Console</h2>
-        <div class="console" id="consoleOutput"></div>
-      </div>
+        <div class="buttons stacked">
+          <button class="primary" id="startLessonBtn">Start Lesson</button>
+          <button class="secondary" id="exampleBtn">Give Example</button>
+          <button class="secondary" id="quizBtn">Quiz Me</button>
+          <button class="ghost" id="checkBackendBtn">Check Backend</button>
+          <button class="ghost" id="clearBtn">Clear Chat</button>
+        </div>
+
+        <div class="tips-box deploy-box">
+          <h3>Backend setup</h3>
+          <ol>
+            <li>Deploy this project to Netlify.</li>
+            <li>Add <code>GEMINI_API_KEY</code> in Netlify environment variables.</li>
+            <li>Optional: add <code>GEMINI_MODEL</code>.</li>
+            <li>Use <strong>Check Backend</strong> before chatting.</li>
+          </ol>
+        </div>
+
+        <div class="tips-box">
+          <h3>Try asking</h3>
+          <div class="chips" id="chipsContainer">
+            <button class="chip">Explain string length simply</button>
+            <button class="chip">Give me a real example</button>
+            <button class="chip">Quiz me on strings</button>
+            <button class="chip">Teach me step by step</button>
+          </div>
+        </div>
+      </aside>
+
+      <main class="panel chat-panel">
+        <div class="chat-header">
+          <h2>Lesson Chat</h2>
+          <p>Your browser talks to your own backend function, and the backend calls Gemini.</p>
+        </div>
+
+        <div class="chat" id="chatOutput"></div>
+
+        <form class="composer" id="chatForm">
+          <input
+            id="messageInput"
+            type="text"
+            placeholder="Ask anything about your lesson..."
+            autocomplete="off"
+          />
+          <button class="primary send-btn" type="submit">Send</button>
+        </form>
+      </main>
     </div>
   </div>
 
